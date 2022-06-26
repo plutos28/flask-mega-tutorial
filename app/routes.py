@@ -11,7 +11,6 @@ from app.models import User
 @flask_app.route("/index")
 @login_required
 def index():
-    user = {"username": "Victor"}
     posts = [
         {
             "author": {"username": "Victor"},
@@ -26,7 +25,7 @@ def index():
             "body": "Damn I love to workout."
         },
     ]
-    return render_template("index.html", title="Home", user=user, posts=posts)
+    return render_template("index.html", title="Home", posts=posts)
 
 
 @flask_app.route("/login", methods=["GET", "POST"])
