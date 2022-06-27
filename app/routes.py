@@ -28,6 +28,17 @@ def index():
     return render_template("index.html", title="Home", posts=posts)
 
 
+@flask_app.route('/user/<username>')
+@login_required
+def user(username):
+    # if the result is None, then 404(resource not found)
+    user = User.query.filter_by(username=username).first_or_404() 
+    posts = [
+        {'author': user, 'body': 'Test post #1'}, 
+        {'author': user, 'body': 'Test post #2'}, 
+    ]
+    return render_template('user.html', user=user, posts=posts)
+
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
