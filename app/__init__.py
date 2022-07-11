@@ -13,7 +13,7 @@ login = LoginManager(flask_app)
 login.login_view = 'login'
 
 # import routes here instead because it needs to import the app variable
-from app import routes, models
+from app import routes, models, errors
 
 
 
